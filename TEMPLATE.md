@@ -17,7 +17,7 @@
 1. Copy this template and rename it:
 
 ```powershell
-Copy-Item CHEATSHEET-TEMPLATE.md <NEW-CHEATSHEET-NAME>.md
+Copy-Item TEMPLATE.md {{TITLE}}.md
 ```
 
 2. Replace placeholders in the new file:

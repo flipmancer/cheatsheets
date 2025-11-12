@@ -2,6 +2,45 @@
 
 > Complete guide from basics to advanced patterns. Covers ES6+ features, async programming, and modern best practices.
 
+## Table of Contents
+
+- [Modern JavaScript Cheatsheet](#modern-javascript-cheatsheet)
+	- [Table of Contents](#table-of-contents)
+	- [Overview](#overview)
+	- [JavaScript Basics](#javascript-basics)
+		- [1. Variables \& Data Types](#1-variables--data-types)
+		- [2. Operators](#2-operators)
+		- [3. Control Flow](#3-control-flow)
+		- [4. Loops](#4-loops)
+		- [5. Functions](#5-functions)
+	- [Intermediate JavaScript](#intermediate-javascript)
+		- [6. Arrays](#6-arrays)
+		- [7. Objects](#7-objects)
+		- [8. Destructuring \& Spread](#8-destructuring--spread)
+		- [9. Classes (ES6+)](#9-classes-es6)
+	- [Advanced JavaScript](#advanced-javascript)
+		- [10. Async/Await \& Promises](#10-asyncawait--promises)
+		- [11. Closures](#11-closures)
+		- [12. Prototypes \& Inheritance](#12-prototypes--inheritance)
+		- [13. this Keyword](#13-this-keyword)
+		- [14. Modules (ES6)](#14-modules-es6)
+		- [15. Error Handling](#15-error-handling)
+	- [Common Patterns](#common-patterns)
+		- [16. Debouncing \& Throttling](#16-debouncing--throttling)
+		- [17. Memoization](#17-memoization)
+		- [18. Currying \& Partial Application](#18-currying--partial-application)
+		- [19. Design Patterns](#19-design-patterns)
+	- [Quick Reference](#quick-reference)
+	- [Debugging Tips](#debugging-tips)
+	- [Performance Tips](#performance-tips)
+	- [Security \& Safety](#security--safety)
+	- [Modern ES6+ Features Reference](#modern-es6-features-reference)
+		- [Template Literals](#template-literals)
+		- [Optional Chaining \& Nullish Coalescing](#optional-chaining--nullish-coalescing)
+		- [Numeric Separators](#numeric-separators)
+	- [Next Steps](#next-steps)
+	- [Resources](#resources)
+
 ## Overview
 
 - Purpose: Quick reference for JavaScript fundamentals through advanced patterns

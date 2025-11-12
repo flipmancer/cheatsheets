@@ -1,5 +1,42 @@
 # HTML & CSS Cheatsheet for React
 
+## Table of Contents
+
+- [HTML \& CSS Cheatsheet for React](#html--css-cheatsheet-for-react)
+	- [Table of Contents](#table-of-contents)
+	- [HTML Elements in JSX](#html-elements-in-jsx)
+		- [1. Semantic Structure](#1-semantic-structure)
+		- [2. Common HTML Elements](#2-common-html-elements)
+		- [3. Form Elements](#3-form-elements)
+		- [4. Tables](#4-tables)
+		- [5. Media Elements](#5-media-elements)
+	- [CSS Fundamentals](#css-fundamentals)
+		- [6. Selectors](#6-selectors)
+		- [7. Box Model](#7-box-model)
+		- [8. Flexbox (Layout)](#8-flexbox-layout)
+		- [9. Grid Layout](#9-grid-layout)
+		- [10. Typography](#10-typography)
+		- [11. Colors \& Backgrounds](#11-colors--backgrounds)
+		- [12. Positioning](#12-positioning)
+		- [13. Display Properties](#13-display-properties)
+		- [14. Transitions \& Animations](#14-transitions--animations)
+		- [15. Shadows \& Effects](#15-shadows--effects)
+		- [16. Responsive Design](#16-responsive-design)
+	- [CSS in React](#css-in-react)
+		- [17. Styling Methods](#17-styling-methods)
+		- [18. Common Layout Patterns](#18-common-layout-patterns)
+		- [19. Form Styling](#19-form-styling)
+		- [20. Dashboard-Specific Styles](#20-dashboard-specific-styles)
+	- [Modern CSS Features](#modern-css-features)
+		- [21. CSS Variables (Custom Properties)](#21-css-variables-custom-properties)
+		- [22. Modern Selectors](#22-modern-selectors)
+		- [23. Units](#23-units)
+	- [Quick Reference](#quick-reference)
+		- [24. Common Patterns](#24-common-patterns)
+		- [25. Accessibility](#25-accessibility)
+	- [Browser DevTools Tips](#browser-devtools-tips)
+	- [Resources](#resources)
+
 ## HTML Elements in JSX
 
 ### 1. Semantic Structure

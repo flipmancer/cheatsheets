@@ -2,6 +2,37 @@
 
 > Complete guide to Node.js runtime features, I/O operations, and server-side development. Covers file system, databases, streams, and Node-specific APIs.
 
+## Table of Contents
+
+- [Node.js Runtime Cheatsheet](#nodejs-runtime-cheatsheet)
+	- [Table of Contents](#table-of-contents)
+	- [Overview](#overview)
+	- [Setup \& Installation](#setup--installation)
+		- [1. Installation](#1-installation)
+		- [2. Package Management](#2-package-management)
+	- [Core Node.js APIs](#core-nodejs-apis)
+		- [3. File System (fs)](#3-file-system-fs)
+		- [4. Streams](#4-streams)
+		- [5. HTTP Server](#5-http-server)
+		- [6. Path Module](#6-path-module)
+	- [Database Integration](#database-integration)
+		- [7. MongoDB](#7-mongodb)
+		- [8. Redis](#8-redis)
+		- [9. PostgreSQL / MySQL](#9-postgresql--mysql)
+	- [Process \& Environment](#process--environment)
+		- [10. Environment Variables](#10-environment-variables)
+		- [11. Process Management](#11-process-management)
+		- [12. Event Loop \& Timers](#12-event-loop--timers)
+	- [Performance \& Optimization](#performance--optimization)
+		- [13. Worker Threads](#13-worker-threads)
+		- [14. Clustering](#14-clustering)
+	- [Security \& Best Practices](#security--best-practices)
+		- [15. Security](#15-security)
+	- [Debugging \& Monitoring](#debugging--monitoring)
+		- [16. Debugging](#16-debugging)
+	- [Quick Reference](#quick-reference)
+	- [Resources](#resources)
+
 ## Overview
 
 - Purpose: Quick reference for Node.js runtime features and server-side development
@@ -240,7 +271,7 @@ import { createServer } from 'http';
 const server = createServer((req, res) => {
   // req = incoming request
   // res = outgoing response
-  
+
   res.writeHead(200, { 'Content-Type': 'application/json' });
   res.end(JSON.stringify({ message: 'Hello World' }));
 });
@@ -252,7 +283,7 @@ server.listen(3000, () => {
 // Routing example
 const server2 = createServer((req, res) => {
   const { method, url } = req;
-  
+
   if (method === 'GET' && url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/html' });
     res.end('<h1>Home Page</h1>');
@@ -776,26 +807,26 @@ if (isMainThread) {
   const worker = new Worker('./worker.js', {
     workerData: { task: 'heavy-computation', input: [1, 2, 3] }
   });
-  
+
   worker.on('message', (result) => {
     console.log('Result from worker:', result);
   });
-  
+
   worker.on('error', (error) => {
     console.error('Worker error:', error);
   });
-  
+
   worker.on('exit', (code) => {
     console.log(`Worker exited with code ${code}`);
   });
-  
+
 } else {
   // Worker thread - do heavy computation
   const { task, input } = workerData;
-  
+
   // CPU-intensive work here
   const result = input.reduce((sum, n) => sum + n, 0);
-  
+
   parentPort.postMessage(result);
 }
 ```
@@ -809,17 +840,17 @@ class WorkerPool {
   constructor(workerScript, poolSize = 4) {
     this.workers = [];
     this.queue = [];
-    
+
     for (let i = 0; i < poolSize; i++) {
       const worker = new Worker(workerScript);
       this.workers.push({ worker, busy: false });
     }
   }
-  
+
   async run(data) {
     return new Promise((resolve, reject) => {
       const availableWorker = this.workers.find(w => !w.busy);
-      
+
       if (availableWorker) {
         this.execute(availableWorker, data, resolve, reject);
       } else {
@@ -827,21 +858,21 @@ class WorkerPool {
       }
     });
   }
-  
+
   execute(workerObj, data, resolve, reject) {
     workerObj.busy = true;
-    
+
     workerObj.worker.once('message', (result) => {
       workerObj.busy = false;
       resolve(result);
-      
+
       // Process next queued task
       if (this.queue.length > 0) {
         const next = this.queue.shift();
         this.execute(workerObj, next.data, next.resolve, next.reject);
       }
     });
-    
+
     workerObj.worker.once('error', reject);
     workerObj.worker.postMessage(data);
   }
@@ -870,24 +901,24 @@ const numCPUs = cpus().length;
 
 if (cluster.isPrimary) {
   console.log(`Primary ${process.pid} is running`);
-  
+
   // Fork workers
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork();
   }
-  
+
   cluster.on('exit', (worker, code, signal) => {
     console.log(`Worker ${worker.process.pid} died`);
     cluster.fork();  // Restart worker
   });
-  
+
 } else {
   // Workers share the same TCP connection
   const server = createServer((req, res) => {
     res.writeHead(200);
     res.end(`Handled by worker ${process.pid}`);
   });
-  
+
   server.listen(3000);
   console.log(`Worker ${process.pid} started`);
 }

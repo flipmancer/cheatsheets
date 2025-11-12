@@ -1,4 +1,25 @@
-# TypeScript Cheatsheet for FlowMaestro
+# TypeScript Cheatsheet
+
+## Table of Contents
+
+- [TypeScript Cheatsheet](#typescript-cheatsheet)
+	- [Table of Contents](#table-of-contents)
+	- [Generics Fundamentals](#generics-fundamentals)
+	- [Generic Interfaces](#generic-interfaces)
+	- [Advanced Generics](#advanced-generics)
+	- [Abstract Classes](#abstract-classes)
+	- [Type Guards](#type-guards)
+	- [Utility Types](#utility-types)
+	- [Async Typing](#async-typing)
+	- [Function Overloads](#function-overloads)
+	- [Type Inference](#type-inference)
+	- [Decorators (Experimental)](#decorators-experimental)
+	- [Namespaces \& Modules](#namespaces--modules)
+	- [Branded Types](#branded-types)
+	- [Mapped Types](#mapped-types)
+	- [Template Literal Types](#template-literal-types)
+	- [Configuration](#configuration)
+	- [Best Practices](#best-practices)
 
 ## Generics Fundamentals
 **Why:** Write reusable code that works with any type while maintaining type safety.
@@ -12,11 +33,11 @@ function identity<T>(value: T): T {
 // Generic class
 class Queue<T> {
     private items: T[] = [];
-    
+
     enqueue(item: T): void {
         this.items.push(item);
     }
-    
+
     dequeue(): T | undefined {
         return this.items.shift();
     }
@@ -37,7 +58,7 @@ interface Producer<T> {
     produce(): AsyncGenerator<T>;
 }
 
-// Consumer interface  
+// Consumer interface
 interface Consumer<T> {
     consume(item: T): Promise<void>;
 }
@@ -77,12 +98,12 @@ type Result = Unwrap<Promise<string>>; // string
 ```typescript
 abstract class StrategyBase<T> {
     protected abstract setup(): void;
-    
+
     async execute(): Promise<void> {
         this.setup();
         await this.run();
     }
-    
+
     protected abstract run(): Promise<void>;
 }
 
@@ -102,7 +123,7 @@ function isError(obj: any): obj is Error {
 }
 
 // Discriminated unions
-type Result<T> = 
+type Result<T> =
     | { success: true; data: T }
     | { success: false; error: string };
 
@@ -169,7 +190,7 @@ class DataFactory {
     process(data: string): Promise<string>;
     process(data: number): Promise<number>;
     process<T>(data: T): Promise<T>;
-    
+
     // Implementation
     async process(data: any): Promise<any> {
         return data;
@@ -276,7 +297,7 @@ type UserUpdate = Optional<User, 'email'>; // email is optional
 ```typescript
 // String manipulation at type level
 type EventName = 'click' | 'focus';
-type EventHandler = `on${Capitalize<EventName>}`; 
+type EventHandler = `on${Capitalize<EventName>}`;
 // 'onClick' | 'onFocus'
 
 type QueueName = `queue_${string}`;
@@ -326,8 +347,8 @@ const user = data as User;
 
 // GOOD
 function isUser(data: unknown): data is User {
-    return typeof data === 'object' 
-        && data !== null 
+    return typeof data === 'object'
+        && data !== null
         && 'id' in data;
 }
 
@@ -341,7 +362,7 @@ class Queue<T> {
 class Producer {
     // GOOD: explicit
     produce(): AsyncGenerator<Data> { }
-    
+
     // BAD: inferred (harder to maintain)
     produce() { }
 }

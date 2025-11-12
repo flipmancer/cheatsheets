@@ -2,6 +2,50 @@
 
 > Complete guide to building React applications. From components and hooks to performance optimization and best practices.
 
+## Table of Contents
+
+- [React Cheatsheet](#react-cheatsheet)
+	- [Table of Contents](#table-of-contents)
+	- [Overview](#overview)
+	- [Project Setup](#project-setup)
+	- [Core React Concepts](#core-react-concepts)
+		- [1. Component Structure](#1-component-structure)
+		- [2. State Management (`useState`)](#2-state-management-usestate)
+		- [3. Props (Parent → Child Communication)](#3-props-parent--child-communication)
+		- [4. Event Handling](#4-event-handling)
+		- [5. Conditional Rendering](#5-conditional-rendering)
+		- [6. Lists \& Iteration](#6-lists--iteration)
+		- [7. useEffect Hook (Side Effects)](#7-useeffect-hook-side-effects)
+		- [8. useRef Hook (Persistent References)](#8-useref-hook-persistent-references)
+		- [9. useCallback Hook (Memoize Functions)](#9-usecallback-hook-memoize-functions)
+		- [10. useMemo Hook (Memoize Values)](#10-usememo-hook-memoize-values)
+	- [API Integration](#api-integration)
+		- [11. Fetch Data (REST API)](#11-fetch-data-rest-api)
+		- [12. POST Request (Form Submission)](#12-post-request-form-submission)
+		- [13. WebSocket Connection](#13-websocket-connection)
+	- [Forms](#forms)
+		- [14. Controlled Inputs](#14-controlled-inputs)
+		- [15. Input Types](#15-input-types)
+	- [Styling](#styling)
+		- [16. CSS Classes](#16-css-classes)
+		- [17. Inline Styles](#17-inline-styles)
+	- [Component Patterns](#component-patterns)
+		- [18. Extracting Components](#18-extracting-components)
+		- [19. Custom Hooks (Reusable Logic)](#19-custom-hooks-reusable-logic)
+	- [Common Patterns](#common-patterns)
+		- [20. Loading States](#20-loading-states)
+		- [21. Error Handling](#21-error-handling)
+		- [22. Debouncing User Input](#22-debouncing-user-input)
+		- [23. Polling for Updates](#23-polling-for-updates)
+	- [Environment Variables](#environment-variables)
+	- [Quick Reference](#quick-reference)
+	- [Debugging Tips](#debugging-tips)
+	- [File Structure Best Practice](#file-structure-best-practice)
+	- [Performance Tips](#performance-tips)
+	- [Security \& Safety](#security--safety)
+	- [Next Steps](#next-steps)
+	- [Resources](#resources)
+
 ## Overview
 
 - Purpose: Quick reference for React fundamentals, hooks, patterns, and modern best practices

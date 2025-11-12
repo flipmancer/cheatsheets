@@ -2,6 +2,50 @@
 
 > Complete guide to Solidity development with Foundry and Hardhat. Covers syntax, patterns, testing, deployment, and security vulnerabilities.
 
+## Table of Contents
+
+- [Solidity Smart Contract Development](#solidity-smart-contract-development)
+	- [Table of Contents](#table-of-contents)
+	- [Overview](#overview)
+	- [Development Environment Setup](#development-environment-setup)
+		- [1. Foundry Setup](#1-foundry-setup)
+		- [2. Hardhat Setup](#2-hardhat-setup)
+	- [Solidity Language Fundamentals](#solidity-language-fundamentals)
+		- [3. Basic Syntax](#3-basic-syntax)
+		- [4. Functions \& Visibility](#4-functions--visibility)
+		- [5. Events \& Errors](#5-events--errors)
+		- [6. Modifiers](#6-modifiers)
+		- [7. Inheritance \& Interfaces](#7-inheritance--interfaces)
+	- [Common Patterns](#common-patterns)
+		- [8. Access Control Patterns](#8-access-control-patterns)
+		- [9. Checks-Effects-Interactions Pattern](#9-checks-effects-interactions-pattern)
+		- [10. Pull Over Push Pattern](#10-pull-over-push-pattern)
+		- [11. Factory Pattern](#11-factory-pattern)
+	- [Testing with Foundry](#testing-with-foundry)
+		- [12. Foundry Test Basics](#12-foundry-test-basics)
+		- [13. Fuzz Testing](#13-fuzz-testing)
+		- [14. Invariant Testing](#14-invariant-testing)
+	- [Testing with Hardhat](#testing-with-hardhat)
+		- [15. Hardhat Test Basics](#15-hardhat-test-basics)
+	- [Security: Threats \& Vulnerabilities](#security-threats--vulnerabilities)
+		- [16. Reentrancy Attacks](#16-reentrancy-attacks)
+		- [17. Access Control Vulnerabilities](#17-access-control-vulnerabilities)
+		- [18. Integer Overflow/Underflow](#18-integer-overflowunderflow)
+		- [19. Front-Running (MEV)](#19-front-running-mev)
+		- [20. Oracle Manipulation](#20-oracle-manipulation)
+		- [21. Denial of Service (DoS)](#21-denial-of-service-dos)
+		- [22. Signature Replay Attacks](#22-signature-replay-attacks)
+		- [23. Unchecked External Calls](#23-unchecked-external-calls)
+		- [24. Delegatecall Vulnerabilities](#24-delegatecall-vulnerabilities)
+	- [Deployment](#deployment)
+		- [25. Foundry Deployment](#25-foundry-deployment)
+		- [26. Hardhat Deployment](#26-hardhat-deployment)
+	- [Gas Optimization Tips](#gas-optimization-tips)
+		- [27. Common Optimizations](#27-common-optimizations)
+	- [Quick Reference](#quick-reference)
+		- [Security Checklist](#security-checklist)
+	- [Resources](#resources)
+
 ## Overview
 
 - Purpose: Quick reference for Solidity smart contract development, testing frameworks, and security best practices

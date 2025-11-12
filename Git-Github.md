@@ -2,6 +2,51 @@
 
 > Complete guide to version control with Git and collaboration with GitHub. From basics to advanced workflows.
 
+## Table of Contents
+
+- [Git \& GitHub Cheatsheet](#git--github-cheatsheet)
+	- [Table of Contents](#table-of-contents)
+	- [Overview](#overview)
+	- [Git Basics](#git-basics)
+		- [1. Repository Setup](#1-repository-setup)
+		- [2. Configuration](#2-configuration)
+		- [3. Basic Workflow](#3-basic-workflow)
+		- [4. Viewing History](#4-viewing-history)
+		- [5. Viewing Changes](#5-viewing-changes)
+	- [Branching \& Merging](#branching--merging)
+		- [6. Branch Management](#6-branch-management)
+		- [7. Merging](#7-merging)
+		- [8. Rebasing](#8-rebasing)
+		- [9. Stashing](#9-stashing)
+	- [Working with Remotes](#working-with-remotes)
+		- [10. Remote Repositories](#10-remote-repositories)
+		- [11. Push \& Pull](#11-push--pull)
+	- [Advanced Git](#advanced-git)
+		- [12. Cherry-Pick](#12-cherry-pick)
+		- [13. Reset \& Revert](#13-reset--revert)
+		- [14. Tags](#14-tags)
+		- [15. Reflog \& Recovery](#15-reflog--recovery)
+		- [16. Git Hooks](#16-git-hooks)
+	- [GitHub-Specific Features](#github-specific-features)
+		- [17. Pull Requests (PRs)](#17-pull-requests-prs)
+		- [18. Issues](#18-issues)
+		- [19. GitHub Actions (CI/CD)](#19-github-actions-cicd)
+	- [Common Workflows](#common-workflows)
+		- [20. Feature Branch Workflow](#20-feature-branch-workflow)
+		- [21. Hotfix Workflow](#21-hotfix-workflow)
+		- [22. Forking Workflow](#22-forking-workflow)
+	- [Commit Conventions](#commit-conventions)
+		- [23. Conventional Commits](#23-conventional-commits)
+	- [.gitignore Patterns](#gitignore-patterns)
+	- [Troubleshooting](#troubleshooting)
+		- [24. Common Issues](#24-common-issues)
+	- [Quick Reference](#quick-reference)
+	- [Performance Tips](#performance-tips)
+	- [Security \& Safety](#security--safety)
+	- [Git Aliases](#git-aliases)
+	- [Next Steps](#next-steps)
+	- [Resources](#resources)
+
 ## Overview
 
 - Purpose: Quick reference for Git commands, workflows, and GitHub features
@@ -1247,3 +1292,6 @@ Add to `~/.gitconfig`:
 - Cheat sheet: [GitHub Git Cheat Sheet](https://training.github.com/downloads/github-git-cheat-sheet/)
 - GitHub CLI: [gh documentation](https://cli.github.com/manual/)
 - Advanced: [Pro Git Book](https://git-scm.com/book/en/v2) (free)
+
+
+[def]: #git-basics

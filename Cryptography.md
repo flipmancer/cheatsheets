@@ -2,6 +2,46 @@
 
 > Practical guide to cryptography in blockchain development. Real code, real patterns, real security mistakes to avoid.
 
+## Table of Contents
+
+- [Cryptography for Web3 Developers](#cryptography-for-web3-developers)
+	- [Table of Contents](#table-of-contents)
+	- [Overview](#overview)
+	- [Getting Started](#getting-started)
+		- ["I know nothing about cryptography" — Start here](#i-know-nothing-about-cryptography--start-here)
+	- [Core Cryptographic Primitives](#core-cryptographic-primitives)
+		- [1. Core Mental Model](#1-core-mental-model)
+		- [2. Hashing (SHA-256, Keccak-256)](#2-hashing-sha-256-keccak-256)
+		- [3. Signatures (ECDSA over secp256k1)](#3-signatures-ecdsa-over-secp256k1)
+		- [4. Key Derivation \& Mnemonics (BIP-39, BIP-32, BIP-44)](#4-key-derivation--mnemonics-bip-39-bip-32-bip-44)
+		- [5. Merkle Trees](#5-merkle-trees)
+		- [6. Symmetric Encryption (AES-GCM)](#6-symmetric-encryption-aes-gcm)
+		- [7. Randomness](#7-randomness)
+	- [Advanced Concepts](#advanced-concepts)
+		- [8. Zero-Knowledge Proofs](#8-zero-knowledge-proofs)
+		- [9. Signature Recovery \& ecrecover](#9-signature-recovery--ecrecover)
+		- [10. Address Derivation (Public Key → Address)](#10-address-derivation-public-key--address)
+		- [11. Replay Protection \& Cross-Chain Signatures](#11-replay-protection--cross-chain-signatures)
+		- [12. Nonce Management \& Meta-Transactions](#12-nonce-management--meta-transactions)
+		- [13. Multi-Sig \& Threshold Cryptography](#13-multi-sig--threshold-cryptography)
+	- [Security \& Best Practices](#security--best-practices)
+		- [14. Gas Optimization (Crypto-Relevant)](#14-gas-optimization-crypto-relevant)
+		- [15. Contract Upgrades \& Key Rotation](#15-contract-upgrades--key-rotation)
+		- [16. Common EIPs You Must Know](#16-common-eips-you-must-know)
+		- [17. Hardware Wallet Integration](#17-hardware-wallet-integration)
+		- [18. Side-Channel Attacks \& Timing](#18-side-channel-attacks--timing)
+		- [19. Key Stretching \& Password Security](#19-key-stretching--password-security)
+	- [Security Checklist](#security-checklist)
+		- [20. Pre-Deployment Auditing](#20-pre-deployment-auditing)
+		- [21. Common Attacks](#21-common-attacks)
+		- [22. Best Practices Summary](#22-best-practices-summary)
+	- [Quick Reference](#quick-reference)
+		- [Handy Snippets](#handy-snippets)
+		- [Glossary](#glossary)
+		- [Configuration Defaults](#configuration-defaults)
+		- [What NOT to Do](#what-not-to-do)
+	- [Resources](#resources)
+
 ## Overview
 
 - Purpose: Quick reference for cryptographic primitives used in Web3 development (signatures, hashing, key management, zero-knowledge proofs)
@@ -279,12 +319,12 @@ function encrypt(plaintext: string, password: string): { iv: string, ciphertext:
   const salt = crypto.randomBytes(32);
   const key = crypto.scryptSync(password, salt, 32);
   const iv = crypto.randomBytes(12);
-  
+
   const cipher = crypto.createCipheriv('aes-256-gcm', key, iv);
   let ciphertext = cipher.update(plaintext, 'utf8', 'hex');
   ciphertext += cipher.final('hex');
   const tag = cipher.getAuthTag();
-  
+
   return {
     iv: iv.toString('hex'),
     ciphertext,
@@ -296,10 +336,10 @@ function encrypt(plaintext: string, password: string): { iv: string, ciphertext:
 function decrypt(encrypted: any, password: string): string {
   const salt = /* retrieve salt */;
   const key = crypto.scryptSync(password, salt, 32);
-  
+
   const decipher = crypto.createDecipheriv('aes-256-gcm', key, Buffer.from(encrypted.iv, 'hex'));
   decipher.setAuthTag(Buffer.from(encrypted.tag, 'hex'));
-  
+
   let plaintext = decipher.update(encrypted.ciphertext, 'hex', 'utf8');
   plaintext += decipher.final('utf8');
   return plaintext;
@@ -352,11 +392,11 @@ contract RandomNumber is VRFConsumerBase {
     bytes32 internal keyHash;
     uint256 internal fee;
     uint256 public randomResult;
-    
+
     function getRandomNumber() public returns (bytes32 requestId) {
         return requestRandomness(keyHash, fee);
     }
-    
+
     function fulfillRandomness(bytes32 requestId, uint256 randomness) internal override {
         randomResult = randomness;
     }
@@ -415,17 +455,17 @@ Solidity example:
 ```solidity
 function recoverSigner(bytes32 hash, bytes memory signature) public pure returns (address) {
     require(signature.length == 65, "Invalid signature length");
-    
+
     bytes32 r;
     bytes32 s;
     uint8 v;
-    
+
     assembly {
         r := mload(add(signature, 32))
         s := mload(add(signature, 64))
         v := byte(0, mload(add(signature, 96)))
     }
-    
+
     address signer = ecrecover(hash, v, r, s);
     require(signer != address(0), "Invalid signature");
     return signer;
@@ -546,7 +586,7 @@ function permit(
     bytes32 s
 ) external {
     require(block.timestamp <= deadline, "Expired");
-    
+
     bytes32 structHash = keccak256(abi.encode(
         PERMIT_TYPEHASH,
         owner,
@@ -555,11 +595,11 @@ function permit(
         nonces[owner]++,  // Increment nonce
         deadline
     ));
-    
+
     bytes32 digest = keccak256(abi.encodePacked("\x19\x01", DOMAIN_SEPARATOR, structHash));
     address signer = ecrecover(digest, v, r, s);
     require(signer == owner, "Invalid signature");
-    
+
     _approve(owner, spender, value);
 }
 ```
